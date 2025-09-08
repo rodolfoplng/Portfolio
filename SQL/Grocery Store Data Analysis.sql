@@ -111,7 +111,7 @@ ORDER BY ci.cityname NULLS LAST, month NULLS LAST;
 
 -- Creating view for total monthly sales (revenue) per employee
 
-CREATE VIEW sales_per_month AS
+CREATE VIEW sales_per_month_employee AS
 SELECT
   e.employeeid,
   EXTRACT(YEAR  FROM s.salesdate)::int AS sales_year,
@@ -127,12 +127,12 @@ GROUP BY
   
   
   
--- Using the sales_per_month view to find the average monthly sales per employee in 2018
+-- Using the sales_per_month_employee view to find the average monthly sales per employee in 2018
 
 SELECT
   employeeid,
   ROUND(AVG(total_sales_month), 2) AS avg_sales_per_month_2018
-FROM sales_per_month
+FROM sales_per_month_employee
 WHERE sales_year = 2018
 GROUP BY employeeid
 ORDER BY avg_sales_per_month_2018 DESC;
