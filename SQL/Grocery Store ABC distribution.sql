@@ -62,7 +62,7 @@ ORDER BY total_revenue_q1 DESC, productid;
 
 
 
--- Materialized View for better performance
+-- Materialized View for better query performance
 
 CREATE MATERIALIZED VIEW mv_sales_per_month_product AS
 SELECT	
@@ -80,9 +80,14 @@ GROUP BY
 
 
 
--- Creating function to find the ABC items for a given year and quarter
+-- Creating function to find the ABC items for a given year, quarter and category thresholds 
 
-CREATE FUNCTION abc_product_yq(p_year int, p_quarter int)
+CREATE OR REPLACE FUNCTION abc_product_yq(
+  p_year    int,
+  p_quarter int,
+  p_a       numeric,  -- accumulative thresholds para "A" items (eg.: 0.80)
+  p_b       numeric   -- accumulative thresholds para "B" items (eg.: 0.95)
+)
 RETURNS TABLE (
   productid int,
   productname text,
@@ -92,7 +97,8 @@ RETURNS TABLE (
   running_q numeric,
   accumulated_share numeric,
   abc text
-) LANGUAGE sql AS $$
+)
+LANGUAGE sql AS $$
 WITH monthly AS (
   SELECT
     productid,
@@ -123,8 +129,8 @@ SELECT
   total_revenue_q, running_q,
   ROUND(running_q / NULLIF(total_q, 0), 4) AS accumulated_share,
   CASE
-    WHEN running_q / NULLIF(total_q, 0) <= 0.80 THEN 'A'
-    WHEN running_q / NULLIF(total_q, 0) <= 0.95 THEN 'B'
+    WHEN running_q / NULLIF(total_q, 0) <= p_a THEN 'A'
+    WHEN running_q / NULLIF(total_q, 0) <= p_b THEN 'B'
     ELSE 'C'
   END AS abc
 FROM acum
@@ -135,7 +141,7 @@ $$;
 
 -- Testing the function
 
-SELECT * FROM abc_product_yq(2018, 1);
+SELECT * FROM abc_product_yq(2018, 1, 0.8, 0.95);
 
 
 
@@ -147,6 +153,6 @@ SELECT
   ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 2) AS pct_items,
   SUM(total_revenue_q) AS revenue_q,
   ROUND(100.0 * SUM(total_revenue_q) / SUM(SUM(total_revenue_q)) OVER (), 2) AS pct_revenue
-FROM abc_product_yq(2018, 1)
+FROM abc_product_yq(2018, 1, 0.8, 0.95)
 GROUP BY abc
 ORDER BY CASE abc WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END;
