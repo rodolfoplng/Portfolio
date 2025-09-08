@@ -4,7 +4,9 @@ Grocery Store Data Analysis
 
 Source: Grocery Store Database found at https://github.com/rodolfoplng/Creating-Grocery-Store-Database-with-Docker-and-PostgreSQL
 
-Queried using PostgreSQL
+Skills: Joins, CTE's, Aggregate Functions, Group By Extensions (Cube, Rollup) Views
+
+*Queried using PostgreSQL
 
 */
 
