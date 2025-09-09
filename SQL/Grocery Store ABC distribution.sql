@@ -87,8 +87,8 @@ GROUP BY
 CREATE OR REPLACE FUNCTION abc_product_yq(
   p_year    int,
   p_quarter int,
-  p_a       numeric,  -- accumulative thresholds para "A" items (eg.: 0.80)
-  p_b       numeric   -- accumulative thresholds para "B" items (eg.: 0.95)
+  p_a       numeric,  -- accumulative thresholds for "A" items (eg.: 0.80)
+  p_b       numeric   -- accumulative thresholds for "B" items (eg.: 0.95)
 )
 RETURNS TABLE (
   productid int,
