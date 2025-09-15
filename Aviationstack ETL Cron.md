@@ -153,10 +153,10 @@ crontab -l
 4. Check the logs  
 ```bash
 cat /absolute/path/to/cron_etl.log
-```
+```  
   
   
-For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process).
+For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process)  
   
   
-Notebook with the API extraction and analysis: [API Request and Extraction from Aviationstack](https://github.com/rodolfoplng/Portfolio/blob/main/API%20Request%20and%20Extraction%20Aviationstack.ipynb).
+Notebook with the API extraction and analysis: [API Request and Extraction from Aviationstack](https://github.com/rodolfoplng/Portfolio/blob/main/API%20Request%20and%20Extraction%20Aviationstack.ipynb)
