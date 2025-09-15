@@ -11,9 +11,9 @@ The workflow automates the ETL pipeline to run **every day at 6:00 AM** using a 
 - Python 3.8+  
 - Installed dependencies:
    
-  ```bash
-  pip install pandas requests
-  ```
+```bash
+pip install pandas requests
+```
   
 ## Python Script  
   
@@ -112,7 +112,7 @@ df.to_csv("Departures.csv", index = False)
 ```
   
 Save the following code into a file called API_Aviation_Stack.py  
-Or alternatively, create the file directly from the terminal:  
+Or alternatively, create the file directly from the terminal (bash):  
 
 ```bash
 nano API_Aviation_Stack.py
@@ -149,12 +149,13 @@ Add the following line to schedule the ETL every day at 6:00 AM:
 ```bash
 crontab -l
 ```
+  
 4. Check the logs  
 ```bash
 cat /absolute/path/to/cron_etl.log
 ```
   
-  
+    
 For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process).
   
 Notebook with the API extraction and analysis: [API Request and Extraction from Aviationstack](https://github.com/rodolfoplng/Portfolio/blob/main/API%20Request%20and%20Extraction%20Aviationstack.ipynb).
