@@ -155,7 +155,7 @@ crontab -l
 cat /absolute/path/to/cron_etl.log
 ```  
   
-  
+## More projects  
   
 For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process)  
   
