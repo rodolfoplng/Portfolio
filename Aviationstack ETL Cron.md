@@ -147,7 +147,6 @@ Add the following line to schedule the ETL every day at 6:00 AM:
   
 3. Verify the cron job  
 ```bash
-  
 crontab -l
 ```
 4. Check the logs  
