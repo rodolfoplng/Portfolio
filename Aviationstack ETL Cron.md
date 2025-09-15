@@ -9,7 +9,8 @@ The workflow automates the ETL pipeline to run **every day at 6:00 AM** using a 
   
 - A valid Aviationstack API key (free subscription works with limited results).  
 - Python 3.8+  
-- Installed dependencies:  
+- Installed dependencies:
+   
   ```bash
   pip install pandas requests
   ```
@@ -126,14 +127,14 @@ python3 API_Aviation_Stack.py
   
 ## Automating with Cron (Linux/macOS)  
   
-1.Find the Python path
+1. Find the Python path
 ```bash
 
 which python3
 # eg.: /user/bin/python3
 ```
   
-2.Edit your crontab  
+2. Edit your crontab  
   
 ```bash
 crontab -e
@@ -155,5 +156,6 @@ cat /absolute/path/to/cron_etl.log
 ```
   
   
-For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process).  
+For a full ETL pipeline using Apache Airflow, take a look at [Airflow DAG for API ETL](https://github.com/rodolfoplng/Airflow-DAG-for-API-ETL-Process).
+  
 Notebook with the API extraction and analysis: [API Request and Extraction from Aviationstack](https://github.com/rodolfoplng/Portfolio/blob/main/API%20Request%20and%20Extraction%20Aviationstack.ipynb).
